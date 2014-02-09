@@ -29,30 +29,33 @@ bool HelloWorld::init() {
 	bool bRet = false;
 	do {
 
-		CC_BREAK_IF(!CCLayerColor::create(ccc4(255, 255, 255, 255)));
+		//////////////////////////////
+		// 1. super init first
+		if (!CCLayer::init()) {
+			return false;
+		}
 
-		// 1. Add a menu item with "X" image, which is clicked to quit the program.
-
-		// Create a "close" menu item with close icon, it's an auto release object.
-		CCMenuItemImage *pCloseItem = CCMenuItemImage::create("CloseNormal.png",
-				"CloseSelected.png", this,
-				menu_selector(HelloWorld::menuCloseCallback));
-		CC_BREAK_IF(!pCloseItem);
-
-		// Place the menu item bottom-right conner.
 		CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
 		CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
 
-		pCloseItem->setPosition(
-				ccp(
-						origin.x + visibleSize.width
-								- pCloseItem->getContentSize().width / 2,
-						origin.y + pCloseItem->getContentSize().height / 2));
+		/////////////////////////////
+		// 2. add a menu item with "X" image, which is clicked to quit the program
+		//    you may modify it.
 
-		// Create a menu with the "close" menu item, it's an auto release object.
+		// add a "close" icon to exit the progress. it's an autorelease object
+		CCMenuItemImage *pCloseItem = CCMenuItemImage::create("CloseNormal.png",
+				"CloseSelected.png", this,
+				menu_selector(HelloWorld::menuCloseCallback));
+
+		pCloseItem->setPosition(
+				ccp(origin.x + pCloseItem->getContentSize().width / 2,
+						origin.y + visibleSize.height
+								- pCloseItem->getContentSize().height / 2));
+
+		// create menu, it's an autorelease object
 		CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
 		pMenu->setPosition(CCPointZero);
-		CC_BREAK_IF(!pMenu);
+		this->addChild(pMenu, 1);
 
 		// Define the gravity vector.
 		b2Vec2 gravity;
