@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/tuanta/Documents/cocos2d-x-projects/CuteAPultCocos2D-x-v3/cocos2d/external/xxhash/xxhash.c
+xxhash.h
+/home/tuanta/Documents/cocos2d-x-projects/CuteAPultCocos2D-x-v3/cocos2d/external/xxhash/xxhash.h
+stdlib.h
+-
+string.h
+-
+stdint.h
+-
+
+/home/tuanta/Documents/cocos2d-x-projects/CuteAPultCocos2D-x-v3/cocos2d/external/xxhash/xxhash.h
+
